@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <!--<link rel="stylesheet" href="resources/demos/style.css">-->
+
+    <script src="isValid.js"></script>
+    <script src="generateMessage.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+//            $('#date').hide();
+            $('#date').datepicker();
+        })
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("button").click(function () {
+                var date = document.getElementById("date").value;
+                var dateIsValid =isValid(date);
+                var message = generateMessage(date,dateIsValid);
+                alert(message);
+            });
+        });
+    </script>
+
+    <title>Date</title>
+</head>
+<body>
+
+    <form class="form-inline">
+        <div class = "form-group">
+            <label for="date">Input Date:</label>
+            <input type="text" class="form-control" id="date" placeholder="yy/zz/xxxx">
+            <button type="submit" class="btn btn-primary" id="button">submit</button>
+        </div>
+    </form>
+
+
+</body>
+</html>
