@@ -27,9 +27,4 @@ function isDigit(digits) {
     return result;
 }
 
-var main = function () {
-    var x = isValid('1111-12-12');
-    console.log(x);
-}();
-
 
