@@ -1,27 +1,11 @@
 $(function () {
     var $container = $('#container');
 
-    var $btnAdd = $('#btn-add');
-    var $btnDelete = $('#btn-delete');
     var $btnPreview = $('#btn-preview');
     var $btnEdit = $('#btn-edit');
-    var $btnSubmit = $('#btn-submit');
     var $rows = $('#rows');
     var $previewRows = $('#previewrows');
 
-
-
-    function deleteRow() {
-        $rows.children().last().detach();
-        var $lastRow = $rows.children().last();
-        // $lastRow.append($btnDelete);
-        $lastRow.append($btnAdd);
-        if($rows.children().length == 0){
-            $btnAdd.prependTo('#container');
-            $btnPreview.hide();
-            $btnSubmit.hide();
-        }
-    }
 
     function preview() {
         $rows.find('input').each(function () {
@@ -61,7 +45,12 @@ $(function () {
         }
     });
     $container.on('click','#btn-delete',function () {
-        deleteRow();
+        deleteRow('#btn-add','#rows');
+        if($('#rows').children().length == 0){
+            $('#btn-add').prependTo('#container');
+            $('#btn-preview').hide();
+            $('#btn-submit').hide();
+        }
     });
     $container.on('click','#btn-preview',function () {
         preview();

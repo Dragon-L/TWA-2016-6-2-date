@@ -24,9 +24,9 @@ function addRow(addButton,targetRows) {
     $(targetRows).append($newRow);
 }
 
-// function deleteRow(addButton,targetRows) {
-//     $(targetRows).children().last().detach();
-//     var $lastRow = $(targetRows).children().last();
-//     // $lastRow.append($btnDelete);
-//     $lastRow.append($(addButton));
-// }
+function deleteRow(addButton,targetRows) {
+    $(targetRows).children().last().detach();
+    var $lastRow = $(targetRows).children().last();
+    // $lastRow.append($btnDelete);
+    $lastRow.append($(addButton));
+}
