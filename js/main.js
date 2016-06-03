@@ -1,20 +1,9 @@
 $(function () {
     var $container = $('#container');
-
     var $btnPreview = $('#btn-preview');
     var $btnEdit = $('#btn-edit');
     var $rows = $('#rows');
     var $previewRows = $('#previewrows');
-
-
-    function preview() {
-        $rows.find('input').each(function () {
-            $previewRows.append('<p><label>Date:</label>'+this.value+'</p>');
-        });
-        $rows.hide();
-        $btnPreview.hide();
-        $btnEdit.show();
-    }
 
     function edit() {
         $previewRows.empty();
@@ -38,14 +27,14 @@ $(function () {
     }
 
     $container.on('click','#btn-add',function () {
-        addRow('#btn-add','#rows');
+        addRow($('#btn-add'),$('#rows'));
         if($('#rows').children().length == 1){
             $('#btn-preview').show();
             $('#btn-submit').show();
         }
     });
     $container.on('click','#btn-delete',function () {
-        deleteRow('#btn-add','#rows');
+        deleteRow($('#btn-add'),$('#rows'));
         if($('#rows').children().length == 0){
             $('#btn-add').prependTo('#container');
             $('#btn-preview').hide();
@@ -53,7 +42,7 @@ $(function () {
         }
     });
     $container.on('click','#btn-preview',function () {
-        preview();
+        preview($('#rows'),$('#previewrows'),$('#btn-preview'),$('#btn-edit'));
     });
     $container.on('click','#btn-edit',function () {
         edit();

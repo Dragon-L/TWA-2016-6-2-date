@@ -20,13 +20,21 @@ function addRow(addButton,targetRows) {
 
     $newRow.find('input').datepicker();
     $newRow.append(deleteButton());
-    $newRow.append($(addButton));
-    $(targetRows).append($newRow);
+    $newRow.append(addButton);
+    targetRows.append($newRow);
 }
 
 function deleteRow(addButton,targetRows) {
-    $(targetRows).children().last().detach();
-    var $lastRow = $(targetRows).children().last();
+    targetRows.children().last().detach();
+    var $lastRow = targetRows.children().last();
     // $lastRow.append($btnDelete);
-    $lastRow.append($(addButton));
+    $lastRow.append(addButton);
+}
+function preview(previewRows,editRows,previewButton,editButton) {
+    previewRows.find('input').each(function () {
+        editRows.append('<p><label>Date:</label>'+this.value+'</p>');
+    });
+    previewRows.hide();
+    previewButton.hide();
+    editButton.show();
 }
