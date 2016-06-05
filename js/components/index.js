@@ -1,40 +1,52 @@
-// $.fn.generateForm =  function() {
-//     this.hide();
-// };
-
-// function addRow() {
-//     var $newRow = newRow();
-//
-//     $newRow.find('input').datepicker();
-//     $newRow.append($btnDelete.show());
-//     $newRow.append($btnAdd);
-//     $rows.append($newRow);
-//
-//     if($rows.children().length == 1){
-//         $btnPreview.show();
-//         $btnSubmit.show();
-//     }
-// }
-function addRow(addButton,targetRows) {
-    var $newRow = newRow();
-
-    $newRow.find('input').datepicker();
-    $newRow.append(deleteButton());
-    $newRow.append(addButton);
-    targetRows.append($newRow);
+function generateDialog(generatePositon) {
+    if (hasDialog) {
+        generatePositon.append(dialogTemplate);
+        $('#dialog').dialog();
+    }
 }
 
-function deleteRow(addButton,targetRows) {
-    targetRows.children().last().detach();
-    var $lastRow = targetRows.children().last();
-    // $lastRow.append($btnDelete);
-    $lastRow.append(addButton);
-}
-function preview(previewRows,editRows,previewButton,editButton) {
-    previewRows.find('input').each(function () {
-        editRows.append('<p><label>Date:</label>'+this.value+'</p>');
+function generatePreview(generatePositon,allInput){
+    generatePositon.append(editButton);
+
+    allInput.forEach(function (data) {
+        generatePositon.append('<p>'+data.type+':'+data.value+'</p>');
     });
-    previewRows.hide();
-    previewButton.hide();
-    editButton.show();
 }
+
+function generateEdit(generatePositon,allInput) {
+    generatePositon.append(previewButton);
+
+    allInput.forEach(function (data) {
+        if (data.type == 'date'){
+            generatePositon.append(dateTemplate({id:data.id,id:data.id,value:data.value}));
+        }else if(data.type == 'text'){
+            generatePositon.append(textTemplate({id:data.id,id:data.id,value:data.value}));
+        }
+    });
+}
+
+function generateNewPage(generatePositon,allInput) {
+    saveInputData(generatePositon,allInput);
+    generatePositon.empty();
+
+    generateDialog(generatePositon);
+    
+    if (isPreviewPage){
+        generatePreview(generatePositon,allInput);
+    }else {
+        generateEdit(generatePositon,allInput);
+    }
+}
+
+function generateNewPageWithoutSaveInput(generatePositon,allInput) {
+    generatePositon.empty();
+
+    generateDialog(generatePositon);
+
+    if (isPreviewPage){
+        generatePreview(generatePositon,allInput);
+    }else {
+        generateEdit(generatePositon,allInput);
+    }
+}
+

@@ -73,7 +73,7 @@ var
 	rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,
 
 	// A simple way to check for HTML strings
-	// Prioritize #id over <tag> to avoid XSS via location.hash (#9521)
+	// Prioritize #inputId over <tag> to avoid XSS via location.hash (#9521)
 	// Strict HTML recognition (#11290: must start with <)
 	rquickExpr = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/,
 
@@ -139,7 +139,7 @@ jQuery.fn = jQuery.prototype = {
 				match = rquickExpr.exec( selector );
 			}
 
-			// Match html or make sure no context is specified for #id
+			// Match html or make sure no context is specified for #inputId
 			if ( match && (match[1] || !context) ) {
 
 				// HANDLE: $(html) -> $(array)
@@ -169,7 +169,7 @@ jQuery.fn = jQuery.prototype = {
 
 					return this;
 
-				// HANDLE: $(#id)
+				// HANDLE: $(#inputId)
 				} else {
 					elem = document.getElementById( match[2] );
 
@@ -1254,12 +1254,12 @@ function Sizzle( selector, context, results, seed ) {
 			if ( nodeType === 1 && context.nodeName.toLowerCase() !== "object" ) {
 				groups = tokenize( selector );
 
-				if ( (old = context.getAttribute("id")) ) {
+				if ( (old = context.getAttribute("inputId")) ) {
 					nid = old.replace( rescape, "\\$&" );
 				} else {
-					context.setAttribute( "id", nid );
+					context.setAttribute( "inputId", nid );
 				}
-				nid = "[id='" + nid + "'] ";
+				nid = "[inputId='" + nid + "'] ";
 
 				i = groups.length;
 				while ( i-- ) {
@@ -1278,7 +1278,7 @@ function Sizzle( selector, context, results, seed ) {
 				} catch(qsaError) {
 				} finally {
 					if ( !old ) {
-						context.removeAttribute("id");
+						context.removeAttribute("inputId");
 					}
 				}
 			}
@@ -1524,7 +1524,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 		Expr.filter["ID"] = function( id ) {
 			var attrId = id.replace( runescape, funescape );
 			return function( elem ) {
-				return elem.getAttribute("id") === attrId;
+				return elem.getAttribute("inputId") === attrId;
 			};
 		};
 	} else {
@@ -1535,7 +1535,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 		Expr.filter["ID"] =  function( id ) {
 			var attrId = id.replace( runescape, funescape );
 			return function( elem ) {
-				var node = typeof elem.getAttributeNode !== strundefined && elem.getAttributeNode("id");
+				var node = typeof elem.getAttributeNode !== strundefined && elem.getAttributeNode("inputId");
 				return node && node.value === attrId;
 			};
 		};
@@ -6077,7 +6077,7 @@ jQuery.fn.extend({
 		});
 	},
 
-	// keepData is for internal use only--do not document
+	// saveInputData is for internal use only--do not document
 	remove: function( selector, keepData ) {
 		var elem,
 			elems = selector ? jQuery.filter( selector, this ) : this,

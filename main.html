@@ -9,44 +9,27 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
+    <script src="js/lodash/lodash.js"></script>
+
+    <script src="js/components/model/data.js"></script>
+    <script src="js/components/controller/saveInputData.js"></script>
+    <script src="js/components/controller/insertData.js"></script>
+    <script src="js/components/controller/deleteOneInput.js"></script>
+    <script src="js/components/view/template.js"></script>
     <script src="js/components/index.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/components/controller/isValid.js"></script>
-    <script src="js/components/model/addButton.js"></script>
-    <script src="js/components/model/deleteButton.js"></script>
-    <script src="js/components/model/editButton.js"></script>
-    <script src="js/components/model/generateMessage.js"></script>
-    <script src="js/components/model/newRow.js"></script>
-    <script src="js/components/model/previewButton.js"></script>
-    <script src="js/components/model/submitButton.js"></script>
-
 
     <title>Date</title>
-
 </head>
-<body>
-<div id="container" class="text-center">
-    <button type="button" id="btn-add" class="btn btn-default btn-sm">
+
+<body id="body">
+<div class="text-center">
+
+    <div id="container"></div>
+
+    <button id="btn-add" class="btn btn-default btn-sm">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     </button>
-    <button type="button" id="btn-delete" class="btn btn-default btn-sm" style="display: none;">
-        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-    </button>
-
-    <button type="button" id="btn-preview" class="btn btn-default btn-sm" style="display: none;">
-        preview
-    </button>
-    <button type="button" id="btn-edit" class="btn btn-default btn-sm" style="display: none;">
-        edit
-    </button>
-
-    <div id="rows" ></div>
-    <div id="previewrows"></div>
-
-    <button type="button" id="btn-submit" class="btn btn-default btn-sm" style="display: none">
-        submit
-    </button>
-
 
 </div>
 </body>
