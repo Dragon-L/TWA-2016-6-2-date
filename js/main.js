@@ -1,35 +1,35 @@
 $(function () {
     $('#btn-add').bind("click",function () {
-        hasDialog = true;
-        generateNewPage($('#container'),allInput);
-        hasDialog = false;
+        data.hasDialog = true;
+        generateNewPage($('#container'),data.allInput);
+        data.hasDialog = false;
     });
 
     $('#body').on('click','#dialog-submit',function () {
-        insertData($("input[name='dialogType']:checked").val(),allInput);
+        insertData($("input[name='dialogType']:checked").val(),data.allInput);
         $(this).parent().remove();
-        generateNewPage($('#container'),allInput);
+        generateNewPage($('#container'),data.allInput);
     });
 
     $('#body').on('click','#dialog-cancel',function () {
         $(this).parent().remove();
-        generateNewPage($('#container'),allInput);
+        generateNewPage($('#container'),data.allInput);
     });
 
     $('#container').on('click','#btn-preview',function () {
-        isPreviewPage = true;
-        generateNewPage($('#container'),allInput);
+        data.status = 'preview';
+        generateNewPage($('#container'),data.allInput);
     });
 
     $('#container').on('click','#btn-edit',function () {
-        isPreviewPage = false;
-        generateNewPage($('#container'),allInput);
+        data.status = 'edit';
+        generateNewPage($('#container'),data.allInput);
     });
 
     $('#container').on('click','button[role=delete]',function () {
-        saveInputData($('#container'),allInput);
-        deleteOneInput(this.id,allInput);
-        generateNewPageWithoutSaveInput($('#container'),allInput);
+        saveInputData($('#container'),data.allInput);
+        deleteOneInput(this.id,data.allInput);
+        generateNewPageWithoutSaveInput($('#container'),data.allInput);
     });
 
 });

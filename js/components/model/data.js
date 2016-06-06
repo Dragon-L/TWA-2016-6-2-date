@@ -1,6 +1,8 @@
-var allInput = [];
-var hasDialog = false;
-var isPreviewPage = false;
+var data = {
+    allInput:[],
+    hasDialog:false,
+    status:'edit'
+};
 
 /*
 var oneInputTemplate = {

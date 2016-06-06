@@ -1,5 +1,5 @@
 function generateDialog(generatePositon) {
-    if (hasDialog) {
+    if (data.hasDialog) {
         generatePositon.append(dialogTemplate);
         $('#dialog').dialog();
     }
@@ -27,11 +27,11 @@ function generateEdit(generatePositon,allInput) {
 
 function generateNewPage(generatePositon,allInput) {
     saveInputData(generatePositon,allInput);
-    generatePositon.empty();
 
+    generatePositon.empty();
     generateDialog(generatePositon);
     
-    if (isPreviewPage){
+    if (data.status == 'preview'){
         generatePreview(generatePositon,allInput);
     }else {
         generateEdit(generatePositon,allInput);
@@ -40,10 +40,9 @@ function generateNewPage(generatePositon,allInput) {
 
 function generateNewPageWithoutSaveInput(generatePositon,allInput) {
     generatePositon.empty();
-
     generateDialog(generatePositon);
 
-    if (isPreviewPage){
+    if (data.status == 'preview'){
         generatePreview(generatePositon,allInput);
     }else {
         generateEdit(generatePositon,allInput);
