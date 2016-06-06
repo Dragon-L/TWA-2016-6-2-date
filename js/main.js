@@ -27,8 +27,8 @@ $(function () {
     });
 
     $('#container').on('click','button[role=delete]',function () {
-        deleteOneInput(this.id,allInput);
         saveInputData($('#container'),allInput);
+        deleteOneInput(this.id,allInput);
         generateNewPageWithoutSaveInput($('#container'),allInput);
     });
 
