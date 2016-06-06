@@ -1,5 +1,5 @@
 var dialogTemplate = '<div id="dialog" title="choose format">'+
-                            '<input type="radio" name="dialogType" checked value="date">date<br>'+
+                            '<input type="radio" name="dialogType" checked   value="date">date<br>'+
                             '<input type="radio" name="dialogType" value="text">text<br>'+
                             '<button id="dialog-submit" type="submit">submit</button>'+
                             '<button id="dialog-cancel">cancel</button>'+
